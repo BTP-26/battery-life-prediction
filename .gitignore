@@ -25,4 +25,5 @@ wandb/
 .vscode/
 
 # Base paper and replication guide
-docs/
+docs/paper/
+docs/BatteryLife_Replication_Guide.md
