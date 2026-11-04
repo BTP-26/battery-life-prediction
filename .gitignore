@@ -23,3 +23,6 @@ env/
 wandb/
 .DS_Store
 .vscode/
+
+# Base paper and replication guide
+docs/
