@@ -231,7 +231,9 @@ class Dataset_original(Dataset):
         self.KDE_samples = copy.deepcopy(self.total_labels) if flag == 'train' else []
 
         self.weights = self.get_loss_weight()
-        if np.any(np.isnan(self.total_charge_discharge_curves)):
+        # Check each sample separately: np.isnan on the whole list would first build
+        # one dense array of the full split (about 36 GB for MIX_large training).
+        if any(np.isnan(curves).any() for curves in self.total_charge_discharge_curves):
             raise Exception('Nan in the data')
         if np.any(np.isnan(self.unique_labels)):
             raise Exception('Nan in the labels')
